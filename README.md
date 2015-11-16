@@ -60,3 +60,14 @@ www.ianlewis.org/en/http2-and-go
 Download http/2 library
     
     go get launchpad.net/mgo
+
+
+# Generate sef-signed certificate how to
+
+http://www.thegeekstuff.com/2009/07/linux-apache-mod-ssl-generate-key-csr-crt-file/
+
+    openssl genrsa -des3 -out josemorenoesteban.com.key 1024
+    openssl req -new -key josemorenoesteban.com.key -out josemorenoesteban.com.csr
+    openssl x509 -req -days 365 -in josemorenoesteban.com.csr -signkey josemorenoesteban.com.key -out josemorenoesteban.com.crt
+
+
