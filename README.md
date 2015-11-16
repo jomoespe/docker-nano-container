@@ -50,5 +50,5 @@ The application has an entry point (http://localhost:8080/) that returns a simpl
 
 Example:
 
-    curlhttp://localhost:8080/
+    curl http://localhost:8080/
 
