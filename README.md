@@ -52,3 +52,11 @@ Example:
 
     curl http://localhost:8080/
 
+
+# To HTTP/2
+
+www.ianlewis.org/en/http2-and-go
+
+Download http/2 library
+    
+    go get launchpad.net/mgo
