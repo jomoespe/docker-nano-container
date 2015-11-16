@@ -10,7 +10,7 @@ With this two little things (*from scratch container* and *statically linked app
 Based on article [Building Minimal Docker Containers for Go Applications](https://blog.codeship.com/building-minimal-docker-containers-for-go-applications/).
 
 
-# Platform requirements
+## Platform requirements
 
   - Go (tested with 1.5.1)
   - Docker (tested with 1.9.0)
@@ -36,3 +36,19 @@ But this make a artifact with shared references. To build a static linked execut
 ## How to run the container
 
     docker run --rm -ti -p 8080:8080 nano-container
+
+
+## Running the application
+
+The application has an entry point (http://localhost:8080/) that returns a simple JSON message:
+
+    {
+        "platform": "docker",
+        "language": "go",
+        "result": "bazinga!"
+    }
+
+Example:
+
+    curlhttp://localhost:8080/
+
