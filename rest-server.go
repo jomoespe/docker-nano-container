@@ -12,11 +12,11 @@ import (
 func get(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
 	io.WriteString(res,
- 		`{
-    		"platform": "docker",
-    		"language": "go",
-    		"result": "bazinga!"
-   		}`,
+`{
+    "platform": "docker",
+    "language": "go",
+    "result": "bazinga!"
+}`,
 	)
 }
 
@@ -25,7 +25,7 @@ func main() {
 	srv := &http.Server {}
 	http.HandleFunc("/", get)
 	http2.ConfigureServer(srv, &http2.Server{})
-	err := http.ListenAndServeTLS(":8443", "josemorenoesteban.com.crt", "josemorenoesteban.com.key", nil)
+	err := http.ListenAndServeTLS(":8443", "cert.pem", "key.pem", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
