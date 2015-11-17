@@ -9,6 +9,8 @@ With this two little things (*from scratch container* and *statically linked app
 
 Based on article [Building Minimal Docker Containers for Go Applications](https://blog.codeship.com/building-minimal-docker-containers-for-go-applications/).
 
+This application is a minimal RESTful HTTP/2 service.
+
 
 ## Platform requirements
 
@@ -35,12 +37,12 @@ But this make a artifact with shared references. To build a static linked execut
 
 ## How to run the container
 
-    docker run --rm -ti -p 8080:8080 nano-container
+    docker run --rm -ti -p 8443:8443 nano-container
 
 
 ## Running the application
 
-The application has an entry point (http://localhost:8080/) that returns a simple JSON message:
+The application has a HTTPS entry point (https://localhost:8443/) that returns a simple JSON message:
 
     {
         "platform": "docker",
@@ -48,26 +50,27 @@ The application has an entry point (http://localhost:8080/) that returns a simpl
         "result": "bazinga!"
     }
 
+The server console shows thr request remote address and protocol
+
 Example:
 
-    curl http://localhost:8080/
+    https://localhost:8443
+
+    curl --insecure https://localhost:8443
 
 
 # To HTTP/2
 
-www.ianlewis.org/en/http2-and-go
+This example uses a auto-generated SSL certificate.
+
+	http://intogooglego.blogspot.com.es/2015/09/day-20-go-http2-server-example.html
+	www.ianlewis.org/en/http2-and-go
 
 Download http/2 library
     
-    go get launchpad.net/mgo
+    go get golang.org/x/net/http2
 
 
-# Generate sef-signed certificate how to
 
-http://www.thegeekstuff.com/2009/07/linux-apache-mod-ssl-generate-key-csr-crt-file/
-
-    openssl genrsa -des3 -out josemorenoesteban.com.key 1024
-    openssl req -new -key josemorenoesteban.com.key -out josemorenoesteban.com.csr
-    openssl x509 -req -days 365 -in josemorenoesteban.com.csr -signkey josemorenoesteban.com.key -out josemorenoesteban.com.crt
 
 

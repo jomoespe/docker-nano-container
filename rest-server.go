@@ -1,5 +1,3 @@
-/* This is the file rest-server
- */
 package main
 
 import (
@@ -11,7 +9,7 @@ import (
 )
 
 func get(w http.ResponseWriter, r *http.Request) {
-	//ShowRequestInfo(r)
+	ShowRequestInfo(r)
 
 	w.Header().Set("Content-Type", "application/json")
 	io.WriteString(w,
@@ -24,8 +22,8 @@ func get(w http.ResponseWriter, r *http.Request) {
 }
 
 func ShowRequestInfo(r *http.Request) {
-	fmt.Printf("Method: %s\n", r.Method)
-	fmt.Printf("Protocol: %s\n", r.Proto)
+	fmt.Printf("Remote address: %s, Protocol: %s\n", r.RemoteAddr, r.Proto)
+	//fmt.Printf("Protocol: %s\n", r.Proto)
 }
 
 func main() {
